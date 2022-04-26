@@ -27,6 +27,8 @@ export const CuentasScreen = () => {
     const [limitePlastico, setLimitePlastico] = useState([]);
     const [lineaA, setLineaA] = useState([]);
 
+    const [denominacionAASHTO, setDenominacionAASHTO] = useState([]);
+    const [indiceGrupo, setIndiceGrupo] = useState([]);
 
     useEffect(() => {
         let listaFiltrada = listaTamices.filter(tamiz => formValues[tamiz.id] !== undefined);
@@ -136,44 +138,44 @@ export const CuentasScreen = () => {
                         if (coeficienteUniformidad >= 6 && coeficienteCurvatura >= 1 && coeficienteCurvatura <= 3) {
                             if (lineaA === 'debajo') {
                                 if (grava >= 15) {
-                                    setDenominacionFinal('ARENA BIEN GRADUADA CON LIMO Y GRAVA');
+                                    setDenominacionFinal('ARENA BIEN GRADUADA CON LIMO Y GRAVA (SW-SM)');
                                 } else {
-                                    setDenominacionFinal('ARENA BIEN GRADUADA CON LIMO');
+                                    setDenominacionFinal('ARENA BIEN GRADUADA CON LIMO (SW-SM)');
                                 }
                             } else {
                                 if (grava >= 15) {
-                                    setDenominacionFinal('ARENA BIEN GRADUADA CON ARCILLA Y GRAVA');
+                                    setDenominacionFinal('ARENA BIEN GRADUADA CON ARCILLA Y GRAVA (SW-SC)');
                                 } else {
-                                    setDenominacionFinal('ARENA BIEN GRADUADA CON ARCILLA');
+                                    setDenominacionFinal('ARENA BIEN GRADUADA CON ARCILLA (SW-SC)');
                                 }
                             }
                         } else {
                             if (lineaA === 'debajo') {
                                 if (grava >= 15) {
-                                    setDenominacionFinal('ARENA MAL GRADUADA CON LIMO Y GRAVA');
+                                    setDenominacionFinal('ARENA MAL GRADUADA CON LIMO Y GRAVA (SP-SM)');
                                 } else {
-                                    setDenominacionFinal('ARENA MAL GRADUADA CON LIMO');
+                                    setDenominacionFinal('ARENA MAL GRADUADA CON LIMO (SP-SM)');
                                 }
                             } else {
                                 if (grava >= 15) {
-                                    setDenominacionFinal('ARENA MAL GRADUADA CON ARCILLA Y GRAVA');
+                                    setDenominacionFinal('ARENA MAL GRADUADA CON ARCILLA Y GRAVA (SP-SC)');
                                 } else {
-                                    setDenominacionFinal('ARENA MAL GRADUADA CON ARCILLA');
+                                    setDenominacionFinal('ARENA MAL GRADUADA CON ARCILLA (SP-SC)');
                                 }
                             }
                         }
                     } else {
                         if (lineaA === 'debajo') {
                             if (grava >= 15) {
-                                setDenominacionFinal('ARENA LIMOSA CON GRAVA');
+                                setDenominacionFinal('ARENA LIMOSA CON GRAVA (SM)');
                             } else {
-                                setDenominacionFinal('ARENA LIMOSA');
+                                setDenominacionFinal('ARENA LIMOSA (SM)');
                             }
                         } else {
                             if (grava >= 15) {
-                                setDenominacionFinal('ARENA ARCILLOSA CON GRAVA');
+                                setDenominacionFinal('ARENA ARCILLOSA CON GRAVA (SC)');
                             } else {
-                                setDenominacionFinal('ARENA ARCILLOSA');
+                                setDenominacionFinal('ARENA ARCILLOSA (SC)');
                             }
                         }
                     }
@@ -181,59 +183,59 @@ export const CuentasScreen = () => {
                     if (grava + arena > 95) {
                         if (coeficienteUniformidad >= 4 && coeficienteCurvatura >= 1 && coeficienteCurvatura <= 3) {
                             if (arena >= 15) {
-                                setDenominacionFinal('GRAVA BIEN GRADUADA CON ARENA');
+                                setDenominacionFinal('GRAVA BIEN GRADUADA CON ARENA (GW)');
                             } else {
-                                setDenominacionFinal('GRAVA BIEN GRADUADA (SW)');
+                                setDenominacionFinal('GRAVA BIEN GRADUADA (GW)');
                             }
                         } else {
                             if (arena >= 15) {
-                                setDenominacionFinal('GRAVA MAL GRADUADA CON ARENA (SP)');
+                                setDenominacionFinal('GRAVA MAL GRADUADA CON ARENA (GP)');
                             } else {
-                                setDenominacionFinal('GRAVA MAL GRADUADA (SP)');
+                                setDenominacionFinal('GRAVA MAL GRADUADA (GP)');
                             }
                         }
                     } else if ((grava + arena < 95) && (grava + arena > 88)) {
                         if (coeficienteUniformidad >= 6 && coeficienteCurvatura >= 1 && coeficienteCurvatura <= 3) {
                             if (lineaA === 'debajo') {
                                 if (arena >= 15) {
-                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON LIMO Y ARENA');
+                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON LIMO Y ARENA (GW-GM)');
                                 } else {
-                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON LIMO');
+                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON LIMO (GW-GM)');
                                 }
                             } else {
                                 if (arena >= 15) {
-                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON ARCILLA Y ARENA');
+                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON ARCILLA Y ARENA (GW-GC)');
                                 } else {
-                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON ARCILLA');
+                                    setDenominacionFinal('GRAVA BIEN GRADUADA CON ARCILLA (GW-GC)');
                                 }
                             }
                         } else {
                             if (lineaA === 'debajo') {
                                 if (arena >= 15) {
-                                    setDenominacionFinal('GRAVA MAL GRADUADA CON LIMO Y ARENA');
+                                    setDenominacionFinal('GRAVA MAL GRADUADA CON LIMO Y ARENA (GP-GM)');
                                 } else {
-                                    setDenominacionFinal('GRAVA MAL GRADUADA CON LIMO');
+                                    setDenominacionFinal('GRAVA MAL GRADUADA CON LIMO (GP-GM)');
                                 }
                             } else {
                                 if (arena >= 15) {
-                                    setDenominacionFinal('GRAVA MAL GRADUADA CON ARCILLA Y ARENA');
+                                    setDenominacionFinal('GRAVA MAL GRADUADA CON ARCILLA Y ARENA (GP-GC)');
                                 } else {
-                                    setDenominacionFinal('GRAVA MAL GRADUADA CON ARCILLA');
+                                    setDenominacionFinal('GRAVA MAL GRADUADA CON ARCILLA (GP-GC)');
                                 }
                             }
                         }
                     } else {
                         if (lineaA === 'debajo') {
                             if (arena >= 15) {
-                                setDenominacionFinal('GRAVA LIMOSA CON ARENA');
+                                setDenominacionFinal('GRAVA LIMOSA CON ARENA (GM)');
                             } else {
-                                setDenominacionFinal('GRAVA LIMOSA');
+                                setDenominacionFinal('GRAVA LIMOSA (GM)');
                             }
                         } else {
                             if (arena >= 15) {
-                                setDenominacionFinal('GRAVA ARCILLOSA CON ARENA');
+                                setDenominacionFinal('GRAVA ARCILLOSA CON ARENA (GC)');
                             } else {
-                                setDenominacionFinal('GRAVA ARCILLOSA');
+                                setDenominacionFinal('GRAVA ARCILLOSA (GC)');
                             }
                         }
                     }
@@ -246,7 +248,7 @@ export const CuentasScreen = () => {
                                 if (grava < 15) {
                                     setDenominacionFinal('LIMO DE ALTO LÍMITE LÍQUIDO ARENOSO (MH)');
                                 } else {
-                                    setDenominacionFinal('LIMO DE ALTO LÍMITE LÍQUIDO ARENOSO CON GRAVA(MH)');
+                                    setDenominacionFinal('LIMO DE ALTO LÍMITE LÍQUIDO ARENOSO CON GRAVA (MH)');
                                 }
                             } else {
                                 if (arena < 15) {
@@ -377,6 +379,39 @@ export const CuentasScreen = () => {
                 }
             }
         }
+
+        // Denominación final AASHTO
+        if (porcentajesCorreccion[15] <= 50 && porcentajesCorreccion[19] <= 30 && porcentajesCorreccion[22] <= 15 && limiteLiquido - limitePlastico <= 6) {
+            setDenominacionAASHTO('Fragmentos de piedra, grava y arena A-1-a');
+        } else if (porcentajesCorreccion[19] <= 50 && porcentajesCorreccion[22] <= 25) {
+            setDenominacionAASHTO('Fragmentos de piedra, grava y arena A-1-b');
+        } else if (porcentajesCorreccion[19] >= 50 && porcentajesCorreccion[22] <= 10) {
+            setDenominacionAASHTO('Arena fina A-1-3');
+        } else if (porcentajesCorreccion[22] <= 35 && limiteLiquido <= 40 && limiteLiquido - limitePlastico <= 10) {
+            setDenominacionAASHTO('Grava limosa o arcillosa A-2-4');
+        } else if (porcentajesCorreccion[22] <= 35 && limiteLiquido >= 41 && limiteLiquido - limitePlastico <= 10) {
+            setDenominacionAASHTO('Grava limosa o arcillosa A-2-5');
+        } else if (porcentajesCorreccion[22] <= 35 && limiteLiquido <= 40 && limiteLiquido - limitePlastico >= 11) {
+            setDenominacionAASHTO('Arena limosa o arcillosa A-2-6');
+        } else if (porcentajesCorreccion[22] <= 35 && limiteLiquido >= 41 && limiteLiquido - limitePlastico >= 11) {
+            setDenominacionAASHTO('Arena limosa o arcillosa A-2-7');
+        } else if (porcentajesCorreccion[22] >= 36 && limiteLiquido <= 40 && limiteLiquido - limitePlastico <= 10) {
+            setDenominacionAASHTO('Suelo limoso A-4');
+        } else if (porcentajesCorreccion[22] >= 36 && limiteLiquido >= 41 && limiteLiquido - limitePlastico <= 10) {
+            setDenominacionAASHTO('Suelo limoso A-5');
+        } else if (porcentajesCorreccion[22] >= 36 && limiteLiquido <= 40 && limiteLiquido - limitePlastico >= 11) {
+            setDenominacionAASHTO('Suelo arcilloso A-6');
+        } else if (porcentajesCorreccion[22] >= 36 && limiteLiquido >= 41 && limiteLiquido - limitePlastico >= 11 && limiteLiquido - limitePlastico <= limiteLiquido - 30) {
+            setDenominacionAASHTO('Suelo arcilloso A-7-5');
+        } else {
+            setDenominacionAASHTO('Suelo arcilloso A-7-6');
+        }
+
+        if (denominacionAASHTO === 'Arena limosa o arcillosa A-2-6' || denominacionAASHTO === 'Arena limosa o arcillosa A-2-7') {
+            setIndiceGrupo(0.01 * (porcentajesCorreccion[22] - 15) * (limiteLiquido - limitePlastico - 10));
+        } else {
+            setIndiceGrupo((porcentajesCorreccion[22] - 35) * (0.2 + 0.005 * (limiteLiquido - 40)) + 0.01 * (porcentajesCorreccion[22] - 15) * (limiteLiquido - limitePlastico - 10));
+        }
     }, [formValues, grava, arena])
 
     return <div className='container mt-5'>
@@ -394,7 +429,7 @@ export const CuentasScreen = () => {
                                 NO introducir tamices que el enunciado no especifica. Dejarlos vacíos.
                             </li>
                             <li>
-                                Si al introducir todos los tamices, en alguna fila aparece la leyenda 'NaN', actualizar la página y volver a empezar
+                                Si al introducir todos los tamices, en alguna fila aparece la leyenda 'NaN', es recomendable actualizar la página y volver a empezar
                             </li>
                             <li>
                                 <b>IMPORTANTE:</b> Una vez cargados todos los tamices, cambiar un 1% el porcentaje del tamiz con mayor abertura para que se confirmen los valores introducidos. Es probable que el tipo de suelo cambie, en este caso el último tipo de suelo desplegado es el correcto.
@@ -500,6 +535,18 @@ export const CuentasScreen = () => {
                 <div className='card'>
                     <div className='card-body'>
                         <h5 className='card-title'>{denominacionFinal}</h5>
+                    </div>
+                </div>
+                <div className='espacio'></div>
+                <div className='card'>
+                    <div className='card-body'>
+                        <h5 className='card-title'>{denominacionAASHTO}</h5>
+                    </div>
+                </div>
+                <div className='espacio'></div>
+                <div className='card'>
+                    <div className='card-body'>
+                        <h5 className='card-title'>Índice Grupo: {indiceGrupo ? Math.round(indiceGrupo) : ''}</h5>
                     </div>
                 </div>
             </div>
