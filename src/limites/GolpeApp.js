@@ -85,7 +85,7 @@ export const GolpeApp = () => {
 
     }
 
-    return <>
+    return <div className='container mt-5'>
         <h1> Unidad 2 - Límite Líquido y Límite Plástico </h1>
         <hr />
         <div className='row'>
@@ -116,5 +116,5 @@ export const GolpeApp = () => {
                     handleAddLimite={handleAddLimite} />
             </div>
         </div>
-    </>;
+    </div>;
 };

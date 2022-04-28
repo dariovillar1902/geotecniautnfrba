@@ -6,6 +6,13 @@ export const golpeReducer = (state = [], action) => {
         case 'delete':
             return state.filter(golpe => golpe.id !== action.payload);
 
+        case 'change':
+            return state.map(golpe =>
+                (golpe.id === action.payload)
+                    ? { ...golpe, numGolpes: 3 }
+                    : golpe
+            )
+
         case 'toggle':
             return state.map(golpe =>
                 (golpe.id === action.payload)

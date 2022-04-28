@@ -13,6 +13,7 @@ export const GolpeList = ({ golpes, handleDelete, handleToggle }) => {
           <th>Peso de suelo seco (Pss/+ Pf)</th>
           <th>Peso de pesafiltro (Pf)</th>
           <th>% Humedad (&omega;)</th>
+          <th>% Limite Liquido</th>
           <th> Borrar </th>
         </tr>
       </thead>

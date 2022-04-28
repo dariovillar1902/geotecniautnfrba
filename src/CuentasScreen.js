@@ -522,6 +522,14 @@ export const CuentasScreen = () => {
                             <td>{Math.round(arena)}</td>
                         </tr>
                         <tr>
+                            <td>Cu</td>
+                            <td>{coeficienteUniformidad ? Math.round(coeficienteUniformidad) : ''}</td>
+                        </tr>
+                        <tr>
+                            <td>Cc</td>
+                            <td>{coeficienteCurvatura ? Math.round(coeficienteCurvatura) : ''}</td>
+                        </tr>
+                        <tr>
                             <td>Linea A</td>
                             <td>{lineaA ? (lineaA === 'debajo' ? 'Limo' : 'Arcilla') : ''}</td>
                         </tr>

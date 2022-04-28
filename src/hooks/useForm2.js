@@ -4,8 +4,8 @@ export const useForm2 = (initialState = {}) => {
 
     const [values, setValues] = useState(initialState)
 
-    const reset = () => {
-        setValues(initialState);
+    const reset = (newFormState = initialState) => {
+        setValues(newFormState);
     }
 
     const handleInputChange = ({ target }) => {
@@ -18,5 +18,6 @@ export const useForm2 = (initialState = {}) => {
     return [values, handleInputChange, reset];
 
 }
+
 
 // Recibe informacion de un formulario en forma de objeto.
