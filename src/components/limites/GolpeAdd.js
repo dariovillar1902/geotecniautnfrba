@@ -1,7 +1,15 @@
-import React from 'react';
-import { useForm2 } from '../hooks/useForm2';
+import React, { useEffect, useState } from 'react';
+import { useForm2 } from '../../hooks/useForm2';
 
-export const LimiteAdd = ({ handleAddLimite }) => {
+export const GolpeAdd = ({ handleAddGolpe }) => {
+
+    const [limiteFinal25Golpes, setLimiteFinal25Golpes] = useState(0);
+
+    useEffect(() => {
+        setLimiteFinal25Golpes(localStorage.getItem('limite25') || '0');
+    }, [])
+
+
 
     const [{ description }, handleInputChange, reset] = useForm2({
         description: ''
@@ -10,7 +18,7 @@ export const LimiteAdd = ({ handleAddLimite }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newLimite = {
+        const newGolpe = {
             id: new Date().getTime(),
             desc: description,
             done: false
@@ -18,10 +26,10 @@ export const LimiteAdd = ({ handleAddLimite }) => {
 
         const action = {
             type: 'add',
-            payload: newLimite
+            payload: newGolpe
         }
 
-        handleAddLimite(newLimite);
+        handleAddGolpe(newGolpe);
         reset();
     }
     return <>

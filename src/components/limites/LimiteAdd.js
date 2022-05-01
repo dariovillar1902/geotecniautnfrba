@@ -1,7 +1,7 @@
 import React from 'react';
-import { useForm2 } from '../hooks/useForm2';
+import { useForm2 } from '../../hooks/useForm2';
 
-export const GolpeAdd = ({ handleAddGolpe }) => {
+export const LimiteAdd = ({ handleAddLimite }) => {
 
     const [{ description }, handleInputChange, reset] = useForm2({
         description: ''
@@ -10,7 +10,7 @@ export const GolpeAdd = ({ handleAddGolpe }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newGolpe = {
+        const newLimite = {
             id: new Date().getTime(),
             desc: description,
             done: false
@@ -18,10 +18,10 @@ export const GolpeAdd = ({ handleAddGolpe }) => {
 
         const action = {
             type: 'add',
-            payload: newGolpe
+            payload: newLimite
         }
 
-        handleAddGolpe(newGolpe);
+        handleAddLimite(newLimite);
         reset();
     }
     return <>

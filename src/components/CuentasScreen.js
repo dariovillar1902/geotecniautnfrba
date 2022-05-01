@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Accordion, Table } from 'react-bootstrap';
 //import { useNavigate } from 'react-router-dom';
-import { listaTamices } from './data/listaTamices';
-import { useForm } from './hooks/useForm';
+import { listaTamices } from '../data/listaTamices';
+import { useForm } from '../hooks/useForm';
 
 export const CuentasScreen = () => {
 
@@ -103,13 +103,12 @@ export const CuentasScreen = () => {
         // Verificacion de limite liquido y limite plastico
         if (formValues.limiteLiquido && formValues.limitePlastico) {
 
-            if (limiteLiquido >= 50) {
-                if ((limiteLiquido - limitePlastico) < (0.73 * (limiteLiquido - 20))) {
-                    setLineaA('debajo');
-                } else {
-                    setLineaA('encima');
-                }
+            if ((limiteLiquido - limitePlastico) < (0.73 * (limiteLiquido - 20))) {
+                setLineaA('debajo');
+            } else {
+                setLineaA('encima');
             }
+
         }
 
 
@@ -272,26 +271,26 @@ export const CuentasScreen = () => {
                         if (grava + arena >= 30) {
                             if (arena >= grava) {
                                 if (grava < 15) {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO ARENOSA (MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO ARENOSA (CH)');
                                 } else {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO ARENOSA CON GRAVA(MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO ARENOSA CON GRAVA (CH)');
                                 }
                             } else {
                                 if (arena < 15) {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO GRAVOSA (MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO GRAVOSA (CH)');
                                 } else {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO GRAVOSA CON ARENA (MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO GRAVOSA CON ARENA (CH)');
                                 }
                             }
                         } else {
                             if (grava + arena >= 15) {
                                 if (arena >= grava) {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO CON ARENA (MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO CON ARENA (CH)');
                                 } else {
-                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO CON GRAVA (MH)');
+                                    setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO CON GRAVA (CH)');
                                 }
                             } else {
-                                setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO (MH)');
+                                setDenominacionFinal('ARCILLA DE ALTO LÍMITE LÍQUIDO (CH)');
                             }
                         }
                     }
@@ -415,7 +414,8 @@ export const CuentasScreen = () => {
     }, [formValues, grava, arena])
 
     return <div className='container mt-5'>
-        <h1> Unidad 2 </h1>
+        <h1> Unidad 2 - Clasificación de suelos SUCS y AASHTO </h1>
+        <hr />
         <div className='row'>
             <Accordion>
                 <Accordion.Item eventKey="0">
@@ -423,7 +423,7 @@ export const CuentasScreen = () => {
                     <Accordion.Body>
                         <ul>
                             <li>
-                                Introducir primero límite líquido y límite plástico si los hubiera, si no dejarlos vacíos.
+                                Introducir primero límite líquido y límite plástico EN % si los hubiera, si no dejarlos vacíos.
                             </li>
                             <li>
                                 NO introducir tamices que el enunciado no especifica. Dejarlos vacíos.
@@ -531,7 +531,7 @@ export const CuentasScreen = () => {
                         </tr>
                         <tr>
                             <td>Linea A</td>
-                            <td>{lineaA ? (lineaA === 'debajo' ? 'Limo' : 'Arcilla') : ''}</td>
+                            <td>{lineaA ? lineaA : ''}</td>
                         </tr>
                         <tr>
                             <td>Limite Liquido</td>
@@ -554,7 +554,7 @@ export const CuentasScreen = () => {
                 <div className='espacio'></div>
                 <div className='card'>
                     <div className='card-body'>
-                        <h5 className='card-title'>Índice Grupo: {indiceGrupo ? Math.round(indiceGrupo) : ''}</h5>
+                        <h5 className='card-title'>Índice Grupo: {(indiceGrupo && indiceGrupo > 0) ? Math.round(indiceGrupo) : ''}</h5>
                     </div>
                 </div>
             </div>
