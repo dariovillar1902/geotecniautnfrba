@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { useForm2 } from '../../hooks/useForm2';
 
 export const GolpeListItem = ({ golpe, index, handleDelete, handleToggle, handleCuenta }) => {
@@ -9,6 +9,7 @@ export const GolpeListItem = ({ golpe, index, handleDelete, handleToggle, handle
     const [limiteLiquido, setLimiteLiquido] = useState([]);
 
     const { numeroGolpes, pesoSueloHumedo, pesoSueloSeco, pesoPesafiltro } = formValues;
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
 
     useEffect(() => {
         if (pesoPesafiltro === undefined) {
@@ -18,8 +19,9 @@ export const GolpeListItem = ({ golpe, index, handleDelete, handleToggle, handle
             setHumedad(((pesoSueloHumedo - pesoPesafiltro) - (pesoSueloSeco - pesoPesafiltro)) / (pesoSueloSeco - pesoPesafiltro));
         }
         setLimiteLiquido(humedad * Math.pow(numeroGolpes / 25, 0.121));
+        forceUpdate();
 
-    }, [formValues]);
+    }, [formValues, humedad, numeroGolpes, pesoPesafiltro, pesoSueloHumedo, pesoSueloSeco]);
 
     useEffect(() => {
         handleCuenta(golpe.id, numeroGolpes, humedad);

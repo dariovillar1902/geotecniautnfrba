@@ -230,6 +230,9 @@ export const GolpeApp = () => {
                             <li>
                                 <b>IMPORTANTE: el dato del límite líquido es estimado</b>, ya que es difícil programar la recta de regresión. Es recomendable chequear el resultado obtenido mediante planilla de Excel.
                             </li>
+                            <li>
+                                Si se introduce una sola medición de límite líquido, el correcto es el de tabla, NO es 0%.
+                            </li>
                         </ul>
                     </Accordion.Body>
                 </Accordion.Item>

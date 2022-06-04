@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { Accordion, Table } from 'react-bootstrap';
 //import { useNavigate } from 'react-router-dom';
 import { listaTamices } from '../data/listaTamices';
@@ -29,6 +29,7 @@ export const CuentasScreen = () => {
 
     const [denominacionAASHTO, setDenominacionAASHTO] = useState([]);
     const [indiceGrupo, setIndiceGrupo] = useState([]);
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
 
     useEffect(() => {
         let listaFiltrada = listaTamices.filter(tamiz => formValues[tamiz.id] !== undefined);
@@ -411,7 +412,8 @@ export const CuentasScreen = () => {
         } else {
             setIndiceGrupo((porcentajesCorreccion[22] - 35) * (0.2 + 0.005 * (limiteLiquido - 40)) + 0.01 * (porcentajesCorreccion[22] - 15) * (limiteLiquido - limitePlastico - 10));
         }
-    }, [formValues, grava, arena])
+        forceUpdate();
+    }, [formValues, grava, arena, porcentajesCorreccion, diametro10, diametro30, diametro60, limiteLiquido, limitePlastico, denominacionAASHTO, coeficienteUniformidad, coeficienteCurvatura, lineaA])
 
     return <div className='container mt-5'>
         <h1> Unidad 2 - Clasificación de suelos SUCS y AASHTO </h1>
@@ -423,13 +425,13 @@ export const CuentasScreen = () => {
                     <Accordion.Body>
                         <ul>
                             <li>
-                                Introducir primero límite líquido y límite plástico EN % si los hubiera, si no dejarlos vacíos.
+                                Introducir primero límite líquido y límite plástico EN % si los hubiera, si no dejarlos vacíos. Recordar que si el suelo NO es plástico la parte fina es limo y si es plástico, es arcilla.
                             </li>
                             <li>
-                                NO introducir tamices que el enunciado no especifica. Dejarlos vacíos.
+                                Salvo el tamiz de 3" que SIEMPRE debe tener un valor, NO introducir tamices que el enunciado no especifica. Dejarlos vacíos.
                             </li>
                             <li>
-                                Si al introducir todos los tamices, en alguna fila aparece la leyenda 'NaN', es recomendable actualizar la página y volver a empezar
+                                Si al introducir todos los tamices, en alguna fila aparece la leyenda 'NaN', es recomendable actualizar la página y volver a empezar.
                             </li>
                             <li>
                                 <b>IMPORTANTE:</b> Una vez cargados todos los tamices, cambiar un 1% el porcentaje del tamiz con mayor abertura para que se confirmen los valores introducidos. Es probable que el tipo de suelo cambie, en este caso el último tipo de suelo desplegado es el correcto.

@@ -19,7 +19,7 @@ export const LimiteListItem = ({ limite, index, handleDelete, handleToggle, hand
         }
         setLimitePlastico(humedad);
 
-    }, [formValues]);
+    }, [formValues, humedad, pesoPesafiltro, pesoSueloHumedo, pesoSueloSeco]);
 
     useEffect(() => {
         handleCuenta2(limite.id, humedad);
