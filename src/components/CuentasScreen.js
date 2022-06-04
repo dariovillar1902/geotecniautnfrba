@@ -35,11 +35,11 @@ export const CuentasScreen = () => {
 
         let map = listaTamices.map((tamiz, indice) => {
             if (listaFiltrada.filter(filtro => filtro.id === tamiz.id).length > 0) {
-                return parseInt(formValues[tamiz.id]);
+                return parseFloat(formValues[tamiz.id]);
             } else {
                 for (let i = tamiz.id; i <= 24; i++) {
                     if (listaFiltrada.filter(filtro => filtro.id === i).length > 0) {
-                        return parseInt(formValues[i]);
+                        return parseFloat(formValues[i]);
                     }
                 }
             }
@@ -47,24 +47,24 @@ export const CuentasScreen = () => {
 
         let map2 = listaTamices.map((tamiz, indice) => {
             if (listaFiltrada.filter(filtro => filtro.id === tamiz.id).length > 0) {
-                return 100 - parseInt(formValues[tamiz.id]);
+                return 100 - parseFloat(formValues[tamiz.id]);
             } else {
                 for (let i = tamiz.id; i <= 24; i++) {
                     if (listaFiltrada.filter(filtro => filtro.id === i).length > 0) {
-                        return 100 - parseInt(formValues[i]);
+                        return 100 - parseFloat(formValues[i]);
                     }
                 }
             }
         });
 
-        if (parseInt(formValues[2]) !== 100) {
+        if (parseFloat(formValues[2]) !== 100) {
             let map3 = listaTamices.map((tamiz, indice) => {
                 if (listaFiltrada.filter(filtro => filtro.id === tamiz.id).length > 0) {
-                    return parseInt(formValues[tamiz.id]) * 100 / parseInt(formValues[2]);
+                    return parseFloat(formValues[tamiz.id]) * 100 / parseFloat(formValues[2]);
                 } else {
                     for (let i = tamiz.id; i <= 24; i++) {
                         if (listaFiltrada.filter(filtro => filtro.id === i).length > 0) {
-                            return parseInt(formValues[i]) * 100 / parseInt(formValues[2]);
+                            return parseFloat(formValues[i]) * 100 / parseFloat(formValues[2]);
                         }
                     }
                 }
@@ -98,8 +98,8 @@ export const CuentasScreen = () => {
             setCoeficienteUniformidad(diametro60 / diametro10);
             setCoeficienteCurvatura(Math.pow(diametro30, 2) / (diametro10 * diametro60));
         }
-        setLimiteLiquido(parseInt(formValues.limiteLiquido));
-        setLimitePlastico(parseInt(formValues.limitePlastico));
+        setLimiteLiquido(parseFloat(formValues.limiteLiquido));
+        setLimitePlastico(parseFloat(formValues.limitePlastico));
         // Verificacion de limite liquido y limite plastico
         if (formValues.limiteLiquido && formValues.limitePlastico) {
 
